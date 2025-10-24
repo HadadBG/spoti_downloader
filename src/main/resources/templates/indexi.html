@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Spoti Dowloader</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/styles/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/styles/css/spotify.css}" />
+    <link
+      th:href="@{/assets/fontawesome/css/fontawesome.css}"
+      rel="stylesheet"
+    />
+    <link th:href="@{/assets/fontawesome/css/brands.css}" rel="stylesheet" />
+    <link th:href="@{/assets/fontawesome/css/regular.css}" rel="stylesheet" />
+    <link th:href="@{/assets/fontawesome/css/solid.css}" rel="stylesheet" />
+    <noscript
+      ><link rel="stylesheet" th:href="@{/styles/css/noscript.css}"
+    /></noscript>
+  </head>
+  <body class="index is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header" class="reveal alt">
+        <h1 id="logo">
+          <a href="index.html"
+            >Spoti
+            <span style="text-transform: capitalize; margin-left: 5px"
+              >Downloader</span
+            ></a
+          >
+        </h1>
+        <div id="reload_all">
+          <i class="fa-solid fa-rotate"></i>
+        </div>
+      </header>
+
+      <!-- Banner -->
+      <section id="banner">
+        <!--
+						".inner" is set up as an inline-block so it automatically expands
+						in both directions to fit whatever's inside it. This means it won't
+						automatically wrap lines, so be sure to use line breaks where
+						appropriate (<br />).
+					-->
+        <div class="inner">
+          <header>
+            <h2>Downloader</h2>
+          </header>
+          <div id="main_object">
+            <p>
+              Para comenzar la magia
+              <br />
+              haga click en el siguiente
+              <br />
+
+              <span th:text="${output}"></span> Boton.
+            </p>
+          </div>
+          <footer id="footer_main">
+            <ul class="buttons stacked">
+              <li>
+                <a
+                  th:href="${spotifyUri}"
+                  class="button fit scrolly spoti-button"
+                  ><i class="fa-brands fa-spotify"></i
+                  ><span>Iniciar Sesión</span>
+                </a>
+              </li>
+            </ul>
+          </footer>
+        </div>
+      </section>
+
+      <!-- Main -->
+      <article id="main">
+        <header class="special container" style="padding-top: 1rem">
+          <span style="font-size: 40px; letter-spacing: 3px"
+            ><strong>Lista de Canciones</strong></span
+          >
+          <table class="song-list">
+            <thead>
+              <tr>
+                <th class="song-list_data number">#</th>
+                <th class="song-list_data title">Título</th>
+                <th class="song-list_data album">Álbum</th>
+                <th class="song-list_data date">
+                  <div>Fecha en que se agregó</div>
+                </th>
+                <th class="song-list_data duration">
+                  <i class="fa-regular fa-clock"></i>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="song-list_body" id="songs-data">
+              <tr>
+                <td class="song-list_data number">1</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p>
+                      Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                    </p>
+                    <p>Bynmx,Imsoul, Darckstar</p>
+                  </div>
+                </td>
+
+                <td class="song-list_data album">
+                  <div>
+                    Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                  </div>
+                </td>
+                <td class="song-list_data date">hace 2 días</td>
+
+                <td class="song-list_data duration">3:15</td>
+              </tr>
+
+              <tr>
+                <td class="song-list_data number">2</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p class="song-list_data">Es Mejor Así</p>
+                    <p class="song-list_data">Cristian Castro</p>
+                  </div>
+                </td>
+                <td class="song-list_data album">
+                  <div>Un segundo En El Tiempo</div>
+                </td>
+                <td class="song-list_data date">hace 5 días</td>
+
+                <td class="song-list_data duration">3:58</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">1</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p>
+                      Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                    </p>
+                    <p>Bynmx,Imsoul, Darckstar</p>
+                  </div>
+                </td>
+
+                <td class="song-list_data album">
+                  <div>
+                    Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                  </div>
+                </td>
+                <td class="song-list_data date">hace 2 días</td>
+
+                <td class="song-list_data duration">3:15</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">2</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p class="song-list_data">Es Mejor Así</p>
+                    <p class="song-list_data">Cristian Castro</p>
+                  </div>
+                </td>
+                <td class="song-list_data album">
+                  <div>Un segundo En El Tiempo</div>
+                </td>
+                <td class="song-list_data date">hace 5 días</td>
+
+                <td class="song-list_data duration">3:58</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">1</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p>
+                      Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                    </p>
+                    <p>Bynmx,Imsoul, Darckstar</p>
+                  </div>
+                </td>
+
+                <td class="song-list_data album">
+                  <div>
+                    Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                  </div>
+                </td>
+                <td class="song-list_data date">hace 2 días</td>
+
+                <td class="song-list_data duration">3:15</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">2</td>
+                <td class="song-list_data title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p class="song-list_data">Es Mejor Así</p>
+                    <p class="song-list_data">Cristian Castro</p>
+                  </div>
+                </td>
+                <td class="song-list_data album">
+                  <div>Un segundo En El Tiempo</div>
+                </td>
+                <td class="song-list_data date">hace 5 días</td>
+
+                <td class="song-list_data duration">3:58</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">1</td>
+                <td class="title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p>
+                      Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                    </p>
+                    <p>Bynmx,Imsoul, Darckstar</p>
+                  </div>
+                </td>
+
+                <td class="song-list_data album">
+                  <div>
+                    Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                  </div>
+                </td>
+                <td class="song-list_data date">hace 2 días</td>
+
+                <td class="song-list_data duration">3:15</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">2</td>
+                <td class="title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p class="song-list_data">Es Mejor Así</p>
+                    <p class="song-list_data">Cristian Castro</p>
+                  </div>
+                </td>
+                <td class="song-list_data album">
+                  <div>Un segundo En El Tiempo</div>
+                </td>
+                <td class="song-list_data date">hace 5 días</td>
+
+                <td class="song-list_data duration">3:58</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">1</td>
+                <td class="title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p>
+                      Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                    </p>
+                    <p>Bynmx,Imsoul, Darckstar</p>
+                  </div>
+                </td>
+
+                <td class="song-list_data album">
+                  <div>
+                    Cú Chulainn vs Ra-Horakty Rap.Incontolable vs Imparable
+                  </div>
+                </td>
+                <td class="song-list_data date">hace 2 días</td>
+
+                <td class="song-list_data duration">3:15</td>
+              </tr>
+              <tr>
+                <td class="song-list_data number">2</td>
+                <td class="title">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273cdc87294af92c389cf46f9d7"
+                  />
+                  <div class="song-list_div">
+                    <p class="song-list_data">Es Mejor Así</p>
+                    <p class="song-list_data">Cristian Castro</p>
+                  </div>
+                </td>
+                <td class="song-list_data album">
+                  <div>Un segundo En El Tiempo</div>
+                </td>
+                <td class="song-list_data date">hace 5 días</td>
+
+                <td class="song-list_data duration">3:58</td>
+              </tr>
+            </tbody>
+          </table>
+        </header>
+        <div id="download-button" class="download-button_div">
+          <button class="download-button">Descargar Canciones</button>
+        </div>
+       
+      </article>
+ <div id="progress_section" class="fondo">
+          <h2>Descargando ...</h2>
+
+          <div class="center-container">
+            <div id="svg-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                version="1.1"
+                viewBox="0 0 620 120"
+                preserveAspectRatio="none"
+              >
+                <path
+                  fill="#952f57"
+                  fill-opacity="0.8"
+                  stroke-width="3"
+                  stroke="#ffffff"
+                  id="progress-path"
+                  d="M 10 61.584 h 30.12 c 9 0 16.34 4.404 16.34 9.804 v 23.388 c 0 2.1 2.84 3.804 6.34 3.804 h 0.92 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.92 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 69.552 c 0 2.1 2.84 3.804 6.34 3.804 h 0.78 c 3.5 0 6.34 -1.704 6.34 -3.804 v -69.552 c 0 -5.4 7.34 -9.804 16.34 -9.804 h 0.78 c 9 0 16.34 4.404 16.34 9.804 v 31.116 c 0 2.1 2.84 3.804 6.34 3.804 h 30.56 v 6 h -30.56 c -9 0 -16.34 -4.404 -16.34 -9.804 v -31.116 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.78 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c -0.02 5.412 -7.36 9.804 -16.36 9.804 h -0.78 c -9 0 -16.34 -4.404 -16.34 -9.804 v -69.552 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -0.92 c -3.5 0 -6.34 1.704 -6.34 3.804 v 69.552 c 0 5.4 -7.34 9.804 -16.34 9.804 h -0.92 c -9 0 -16.34 -4.404 -16.34 -9.804 v -23.388 c 0 -2.1 -2.84 -3.804 -6.34 -3.804 h -30.12 Z v -1.5"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="center-container">
+            <div class="progress">
+              <div class="indeterminate"></div>
+            </div>
+          </div>
+          <!-- Compiled and minified CSS -->
+
+          <!-- Compiled and minified JavaScript -->
+
+          <h3 id="percent">0%</h3>
+        </div>
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="copyright">
+          <li>&copy; 2025 Spoti Downloader</li>
+          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </footer>
+    </div>
+    <!-- Thymeleaf -->
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+
+      var spotidata = /*[[${spotiMap}]]*/ null;
+
+      /*]]>*/
+    </script>
+    <!-- Scripts -->
+    <!-- TODO:Set local StompJS-->
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script th:src="@{/styles/js/progress.js}"></script>
+    <script th:src="@{/styles/js/jquery.min.js}"></script>
+    <script th:src="@{/styles/js/jquery.dropotron.min.js}"></script>
+    <script th:src="@{/styles/js/jquery.scrolly.min.js}"></script>
+    <script th:src="@{/styles/js/jquery.scrollex.min.js}"></script>
+    <script th:src="@{/styles/js/browser.min.js}"></script>
+    <script th:src="@{/styles/js/breakpoints.min.js}"></script>
+    <script th:src="@{/styles/js/util.js}"></script>
+    <script th:src="@{/styles/js/main.js}"></script>
+    <script th:src="@{/styles/js/spotify.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+header.special:before, header.special:after {
+	width: 33%;
+}
+body.index #main {
+  padding-bottom: 5em;
+
+}
+.song-list_div{
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	
+}
+.song-list_div>p{
+
+	text-align: start;
+	
+}
+.song-list_data{
+	text-align: start;
+	
+}
+.song-list{
+	
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 2rem;
+	padding: 0.5rem 2rem 0 2rem;
+	/*border: 2px solid #adacac;*/
+
+	display: block;
+}
+.song-list{
+	font-size: 17px;
+	
+  background-image: linear-gradient(to left, transparent 0 32px, gray 32px calc(100% - 32px) ,transparent calc(100% - 32px) 100%),
+
+    linear-gradient(to bottom, transparent 0 65px, gray 65px calc(100% - 25px) ,transparent calc(100% - 25px) 100%),
+     linear-gradient(to right, transparent 0 32px, gray 32px calc(100% - 32px) ,transparent calc(100% - 32px) 100%),
+		
+	
+	linear-gradient(to top, transparent 0 25px, gray 25px calc(100% - 65px) ,transparent calc(100% - 65px) 100%);
+  
+ 			
+  background-position: 100% 0, 100% 0, 0 100%, 0 100%;
+  background-size: 100% 1px, 1px 100%;
+  background-repeat: no-repeat;
+  position: relative;
+ 
+  
+
+}
+.song-list>tbody>tr{
+	display: flex;
+	flex: 0 0 100%;
+	width: 100%;
+	margin-bottom: 1rem;
+
+}
+.song-list>thead{
+	
+	display: flex;
+  flex-direction: column;
+}
+.song-list>thead>tr{
+	margin-bottom: 1.5rem;
+	border-bottom: gray solid 1px;
+	padding-bottom: 0.5rem;
+	height: 1rem;
+	
+  	display: flex;
+	flex: 0 0 100%;
+	width: 100%;
+	margin-bottom: 1rem;
+	
+}
+.number{
+	min-width: 3rem;
+  margin: auto;
+}
+.song-list>tbody{
+	display: flex;
+	flex-direction: column;
+}
+.title{
+	max-width: 50% ;
+	display: flex;
+	min-width: 290px;
+	width: 290px;
+  flex-grow: 1;
+	padding-right: 1.5rem;
+	
+}
+.title>div{
+	width: calc(100% - 50px);
+
+}
+.title>div>p{
+	width: 100%;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin :0;
+  
+	
+}
+.title>img{
+  width: 40px;
+  margin: auto;
+  margin-left: 0;
+  border-radius: 0.2rem;
+}
+.title>div>p:first-child{
+	font-weight: 700;
+}
+.album{
+	max-width: 50% ;
+	display: flex;
+	min-width: 270px;
+  width: 270px;
+  flex-grow: 0.7;
+	align-items: center;
+	
+}
+.album>div{
+	
+	width: 100%;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0;
+	padding-right: 1.5rem;
+	vertical-align: middle;
+}
+.date{
+	max-width: 50% ;
+	display: flex;
+	width: 170px;
+  min-width: 170px;
+	align-items: center;
+}
+.date>div{
+  width: 100%;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0;
+	padding-right: 1.5rem;
+}
+.duration{
+	max-width: 50% ;
+	display: flex;
+	width: 60px;
+  min-width: 60px;
+	align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.duration>i{
+	display: flex;
+	align-items: center;
+	
+}
+th.duration{
+	justify-content: center;
+}
+.download-button_div{
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.download-button{
+	margin: 0 auto;
+
+	 border: 1px solid;
+	 box-shadow: inset 0 0 20px rgba(124, 128, 129, 0);
+	 outline: 1px solid;
+	 outline-color: rgba(124, 128, 129, .5);
+	 outline-offset: 0px;
+	 text-shadow: none;
+	 transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.download-button:hover {
+	 border: 1px solid;
+	 box-shadow: inset 0 0 10px rgba(124, 128, 129, .5), 0 0 10px rgba(124, 128, 129, .2);
+	 outline-color: rgba(124, 128, 129, 0);
+	 outline-offset: 15px;
+	 text-shadow: 0.1px 0.1px 0.1px #427388;
+}
+
+.button.spoti-button{
+    margin: 0 auto;
+    text-align:left;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    padding: 0 2rem;
+}
+.button.spoti-button>i{
+    font-size: 1.8rem;
+}
+
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+#header.alt{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 4rem;
+}
+#header.reveal{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 4rem;
+}
+
+ 
+#header.alt>div,#header.reveal>div{
+  padding: 0.5rem 0.7rem;
+  border: 1px solid transparent;
+  
+}
+
+
+*{
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+#header.reveal>div:hover{
+  border: 1px solid #427388;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  
+}
+#header.alt>div:hover{
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  
+}
+.animate_rotation{
+ 
+    animation:spin 1.5s ease-in-out infinite;
+}
+
+
+@keyframes spin { 
+    
+    100%{ 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg)  ; 
+      
+    } 
+}
+#reload_all>i{
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+/*Progess BAR*/
+#svg-container {
+  margin: 0;
+  width: 90vw;
+
+
+}
+.progress .indeterminate {
+  background-color:#952f57 !important;
+}
+.center-container{
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.progress{
+  width: 80vw;
+  background-color: #ffffff;
+}
+.fondo{
+
+ display: none;
+  visibility: hidden;
+  background-color: #645862;
+    background-image: url("images/overlay.png"), url("/styles/images/banner.jpg");
+    background-position:  top left, center right;
+    background-repeat: repeat, no-repeat;
+    background-size:auto, cover;
+    color: #fff;
+    cursor: default;
+    padding: 8em 0;
+    text-align: center;
+    height: 100vh;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 3s ease-in-out, visibility 3s; /* Dándole al div una duración, una función de tiempo y un retardo para que la animación funcione */
+
+}
+
+.fondo>h2{
+  margin: 20px auto;
+  width: 80%;
+  text-align: left;
+}
+
+.fondo.visible{
+
+  visibility: visible;
+  opacity: 1;
+
+}
