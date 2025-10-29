@@ -212,13 +212,15 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
 
 }
        
-       let less_songs=songs.slice(0,10)
-        
+    let less_songs=songs.slice(0,10)
+        less_songs.push(songs[songs.length - 1])
        
       
      
       less_songs=less_songs.map((x,index)=>{
-
+         if (index ==10){
+            index=songs.length-1
+         }
         return `  
               <tr>
                   <td class="song-list_data number">${index+1}</td>
@@ -439,6 +441,11 @@ function handleEvent(e) {
 }
 
 $( "#download-button" ).on( "click", function() {
+  if(true){
+  var toastHTML = '<span>Inicio Invalido</span>';
+  M.toast({html: toastHTML});
+    return
+  }
   let filtered_songs =  songs.map( x=>{
           let aux=   "\""+x.title +" - "+x.artists[0]
           if(x.artists.length != 1){
