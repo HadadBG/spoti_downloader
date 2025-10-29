@@ -1,85 +1,37 @@
-
-
-import yt_dlp
-
-import os
-
-
-imagen=[]
-import sys
-import ffmpeg_normalize
-import re
+from time import sleep
 import zipfile
 
-
-from yt_dlp.postprocessor import FFmpegPostProcessor
-FFmpegPostProcessor._ffmpeg_location.set(R'D:\Hadad\programas\ffmpeg\bin')
-
-
-def download_video(url):
-    ydl_opts = {
-        'format': 'bestaudio/best',  # Descargar el mejor audio
-        'outtmpl': './python/canciones/'+url.split("tsearch:")[1],  # Guardar como video.mp4
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',  # Extraer como MP3
-            'preferredquality': '320',  # Calidad del audio
-        }],
-    }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+sleep(2)
+print("LOG:1",flush=True)
+sleep(2)
+print("LOG:2",flush=True)
+sleep(2)
+print("LOG:3",flush=True)
+sleep(2)
+print("LOG:4",flush=True)
+sleep(2)
+print("LOG:5",flush=True)
+sleep(2)
 
 
+print(f"Normalizando las 10 canciones",flush=True)
+print("File: 100%|##########| 0/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)
+print("File: 100%|##########| 1/5 [00:30<00:00, 30.89s/it]",flush=True)
+sleep(2) 
+print("File: 100%|##########| 2/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)
+print("File: 100%|##########| 3/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)   
+print("File: 100%|##########| 4/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)
+print("File: 100%|##########| 5/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)
+print("File: 100%|##########| 5/5 [00:30<00:00, 30.89s/it]",flush=True)    
+sleep(2)
+with open("./algo.txt", "w") as fo:
+    fo.write("Saludos\n")
+zip = zipfile.ZipFile("./songs_list/"+"SL_12152632544"+".zip", "w", zipfile.ZIP_STORED,compresslevel=1)
 
-
-#lista=["jNY_wLukVW0"]    #["sElE_BfQ67s","7iVXEMyQnpA","50rlHVe6g9Q"] #"sElE_BfQ67s",
-def get_songs(raw_string):
-    close_quote= False
-    aux=""
-    songs_array = []
-    for character in raw_string[1:-1]:
-        if character ==  '"': 
-            close_quote = not close_quote
-        elif close_quote:
-            aux+=character
-        elif character ==",":
-            songs_array.append(aux)
-            aux=""
-    if aux != "":
-        songs_array.append(aux)
-    return songs_array
-
-
-#C:\Users\hbautistag\Desktop\spring\spotify\songs_list\SL_20250331_132428.txt
-if __name__=="__main__":
-    
-    normalizer = ffmpeg_normalize.FFmpegNormalize(audio_codec="mp3",dynamic=True,sample_rate=48000,progress=True)
- 
-    
-    with open (sys.argv[1],encoding="UTF-8")as file:
-        raw_songs= file.readline()
-        
-    songs= get_songs(raw_songs)
-    
-    for index,song in enumerate(songs) :
-        print("LOG:"+str(index+1) +"/"+str(len(songs)) )
-        auxi = re.sub("[\\/:*?\"<>|]","#",song)
-        download_video("ytsearch:"+auxi)
-       
-        normalizer.add_media_file("./python/canciones/"+auxi+".mp3","./python/normalizadas/"+auxi+".mp3")
-    #print(f"LOG:Normalizando las {len(songs)} canciones")
-    print("Normalizando canciones...")    
-    normalizer.run_normalization()
-    for file in os.listdir("./python/canciones/"):
-        os.remove("./python/canciones/"+file)
-    
-    nombre=os.path.basename(sys.argv[1]).split(".")[0]  
-    
-    zip = zipfile.ZipFile("./songs_list/"+nombre+".zip", "w", zipfile.ZIP_STORED,compresslevel=1)
-    for file in os.listdir("./python/normalizadas/"):
-        zip.write("./python/normalizadas/"+file,arcname=file)
-    zip.close()
-    for file in os.listdir("./python/normalizadas/"):
-        os.remove("./python/normalizadas/"+file)
- 
-
+zip.write("./algo.txt")
+zip.close()

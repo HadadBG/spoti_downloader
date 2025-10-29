@@ -383,7 +383,7 @@ th.duration{
     margin: 0 auto;
     opacity: 0;
     transition: opacity 3s ease-in-out, visibility 3s; /* Dándole al div una duración, una función de tiempo y un retardo para que la animación funcione */
-
+  padding-top: 11rem;
 }
 
 .fondo>h2{

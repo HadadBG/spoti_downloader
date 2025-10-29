@@ -46,7 +46,7 @@ public class WebSocketReponseController {
     ArrayList<String> songs= songsRequest.getContent();
    String id_spo = principal.getName();
   
-    songs=new ArrayList<String>(songs.subList(0, 1));
+    songs=new ArrayList<String>(songs.subList(0, 5));
   
     String id= "SL_"+id_spo+".zip";
 
@@ -73,7 +73,7 @@ public class WebSocketReponseController {
     }
         builder.redirectErrorStream(true);
    
-        messagingTemplate.convertAndSendToUser(principal.getName(), "/ws_responses/sessionId",new WebSocketResponse("INI",""));
+        messagingTemplate.convertAndSendToUser(principal.getName(), "/ws_responses/sessionId",new WebSocketResponse("INI",Integer.toString(songs.size())));
           
         Process p = builder.start();
         
@@ -89,7 +89,7 @@ public class WebSocketReponseController {
           }
           else if(line.startsWith("File:")){
            // System.out.println(line);
-            String progreso=line.replaceAll(".*(\\d+/\\d+).*", "$1");
+            String progreso=line.replaceAll(".*(\\d+)/\\d+.*", "$1");
 
 
             messagingTemplate.convertAndSendToUser(principal.getName(), "/ws_responses/sessionId",new WebSocketResponse("NRMLZ",progreso));
@@ -111,7 +111,7 @@ public class WebSocketReponseController {
   //  songs=new ArrayList<String>(songs.subList(0, 25));
     //System.out.println(id_spo);
     
-    messagingTemplate.convertAndSendToUser(principal.getName(), "/ws_responses/sessionId",new WebSocketResponse("END",""));
+   messagingTemplate.convertAndSendToUser(principal.getName(), "/ws_responses/sessionId",new WebSocketResponse("END",""));
     
  
 //    sessionService.sendToSession(sessionId,new WebSocketResponse("huennnass"));

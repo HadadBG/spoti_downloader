@@ -8,12 +8,7 @@ let refresh_token=localStorage.getItem("refresh_token")
 if (!refresh_token || typeof refresh_token === "undefined" || refresh_token == "undefined"){
     refresh_token=null
 }
-var bar = new ProgressBar.Path('#progress-path', {
-  easing: 'linear',
-  duration: 500
-});
-animation=0;
-bar.set(0);
+
 
 var client_id = localStorage.getItem("client_id") == undefined ?null:localStorage.getItem("client_id")
 var access_token =null
@@ -283,15 +278,52 @@ stompClient.onStompError = (frame) => {
   console.error('Broker reported error: ' + frame.headers['message']);
   console.error('Additional details: ' + frame.body);
 };
-
+var titulo_download = document.getElementById("title_download")
+var percent_download = document.getElementById("percent")
+var bar_download = new ProgressBar.Path('#progress-path', {
+  easing: 'easeInOut',
+  duration: 1500
+});
+var animation=0;
+var increment =0;
+var total_canciones
 stompClient.onConnect = (frame) => {
     //console.log("Connected:", frame);
 
     // Suscribirte primero
     stompClient.subscribe("/user/ws_responses/sessionId", (message) => {
+     
         response =JSON.parse(message.body) 
-        console.log("Mensaje de sessionId:", response);
-        if(response.stat =="END"){
+        
+        if (response.stat=="INI"){
+          bar_download.set(0);
+          console.log("BUENAAAAS")
+          total_canciones = parseInt(response.msg,10)
+          increment= (1/total_canciones)/2;
+        
+        }
+        else if (response.stat=="DWNLD"){
+          let aux = increment* parseInt(response.msg,10)
+          titulo_download.innerHTML = `Descargando cancion numero ${response.msg} de ${total_canciones} ...`
+          percent_download.innerHTML= `${Math.round(aux*100)}%`
+          bar_download.animate(aux)
+
+        }
+        else if (response.stat == "NRMLZ"){
+          if (response.msg == total_canciones.toString()){
+            titulo_download.innerHTML = `Finalizando proceso ...`
+            percent_download.innerHTML="100%"
+            bar_download.animate(1)
+          }
+          else{
+            let aux = (increment* (parseInt(response.msg,10)))+(increment*total_canciones)
+            titulo_download.innerHTML = `Normalizando cancion numero ${parseInt(response.msg,10)+1} de ${total_canciones} ...`
+            percent_download.innerHTML= `${Math.round(aux*100)}%`
+           bar_download.animate(aux)
+
+          }
+        }
+        else if(response.stat =="END"){
           document.getElementById("download-button").style.display="flex";
         const div = document.getElementById("progress_section")
         div.style.display="none";
@@ -304,7 +336,7 @@ stompClient.onConnect = (frame) => {
         asyncRequest = new XMLHttpRequest();
 
         //asyncRequest.addEventListener("readystatechange", stateChange, false);
-        asyncRequest.addEventListener("loadstart", handleEvent);
+        //asyncRequest.addEventListener("loadstart", handleEvent);
         asyncRequest.addEventListener("load", handleEvent);
         asyncRequest.addEventListener("loadend", handleEvent);
         
