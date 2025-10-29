@@ -398,3 +398,49 @@ th.duration{
   opacity: 1;
 
 }
+
+/*Song selector*/
+
+.selector_title{
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+.selector_container{
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+.input_container>input[type=number]:not(.browser-default){
+  width: 5rem;
+  text-align: right;
+}
+.input_container{
+  display: flex;
+  align-items: center;
+  gap:2rem;
+}
+.input_container>p{
+  margin:0;
+}
+
+input[type=number]:not(.browser-default):focus:not([readonly]){
+
+  border-bottom: 1px solid #952f57;
+    -webkit-box-shadow: 0 1px 0 0 #952f57;
+    box-shadow: 0 1px 0 0 #952f57;
+}
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 20% !important; /* Adjust as needed for desired vertical position */
+    left: calc(50% - 8rem) !important; /* Adjust as needed for desired horizontal position */
+    width: 16rem;
+}
+.download-button:focus{
+  outline: 1px solid;
+  background-color: unset;
+}
