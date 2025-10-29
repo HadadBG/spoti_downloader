@@ -414,8 +414,9 @@ th.duration{
   margin: 0 auto;
   margin-top: 2rem;
 }
-.selector_container>input[type=number]:not(.browser-default){
+.input_container>input[type=number]:not(.browser-default){
   width: 5rem;
+  text-align: right;
 }
 .input_container{
   display: flex;
@@ -425,6 +426,7 @@ th.duration{
 .input_container>p{
   margin:0;
 }
+
 input[type=number]:not(.browser-default):focus:not([readonly]){
 
   border-bottom: 1px solid #952f57;

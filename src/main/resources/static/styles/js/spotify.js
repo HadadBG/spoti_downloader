@@ -120,6 +120,7 @@ function clean_data (songs){
   })
 }
 async function  getRefresh() {
+
   let body =   await fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
   body: new URLSearchParams(spotidata),
@@ -211,7 +212,7 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
     localStorage.setItem("songs",JSON.stringify(songs))
 
 }
-       
+      document.getElementById("end_songs").value = songs.length; 
     let less_songs=songs.slice(0,10)
         less_songs.push(songs[songs.length - 1])
        
@@ -441,10 +442,20 @@ function handleEvent(e) {
 }
 
 $( "#download-button" ).on( "click", function() {
-  if(true){
-  var toastHTML = '<span>Inicio Invalido</span>';
+
+  let inicio=parseInt(document.getElementById("ini_songs").value)
+  let final =parseInt(document.getElementById("end_songs").value)
+console.log(songs.length)
+  if(inicio > final || inicio<1){
+  let toastHTML = '<span>Inicio Invalido</span>';
   M.toast({html: toastHTML});
     return
+  }
+  else if(final > songs.length) {
+     let toastHTML = '<span>Fin Invalido</span>';
+      M.toast({html: toastHTML});
+    return 
+
   }
   let filtered_songs =  songs.map( x=>{
           let aux=   "\""+x.title +" - "+x.artists[0]
@@ -463,7 +474,7 @@ $( "#download-button" ).on( "click", function() {
  
   stompClient.publish({
     destination:"/ws_requests/download_sl",
-    body:JSON.stringify({"content": filtered_songs}),
+    body:JSON.stringify({"content": filtered_songs, "iniSong":inicio,"endSong":final}),
   
   })
 

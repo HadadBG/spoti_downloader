@@ -43,10 +43,13 @@ public class WebSocketReponseController {
   public void download_songs(WebSocketRequest songsRequest,Principal principal,SimpMessageHeaderAccessor headerAccessor) throws Exception {
    // String topic = "/ws_messages/download_file";
     System.out.println("Conectado a web socket .... "+ principal.getName());
+    int initialSong=songsRequest.getIniSong()-1;
+    int finalSong =songsRequest.getEndSong();
     ArrayList<String> songs= songsRequest.getContent();
    String id_spo = principal.getName();
-  
-    songs=new ArrayList<String>(songs.subList(0, 5));
+  System.out.println(initialSong);
+  System.out.println(finalSong);
+    songs=new ArrayList<String>(songs.subList(initialSong, finalSong));
   
     String id= "SL_"+id_spo+".zip";
 
