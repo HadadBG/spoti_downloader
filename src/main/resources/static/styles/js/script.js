@@ -1,7 +1,3 @@
-
-       
-
-
 $( "#main" ).css( "display", "none" );
 let refresh_token=localStorage.getItem("refresh_token")
 
@@ -446,12 +442,13 @@ $( "#download-button" ).on( "click", function() {
   let inicio=parseInt(document.getElementById("ini_songs").value)
   let final =parseInt(document.getElementById("end_songs").value)
 console.log(songs.length)
-  if(inicio > final || inicio<1){
+  console.log(inicio)
+  if(inicio > final || inicio<1 || isNaN(inicio)){
   let toastHTML = '<span>Inicio Invalido</span>';
   M.toast({html: toastHTML});
     return
   }
-  else if(final > songs.length) {
+  else if(final > songs.length || isNaN(final)) {
      let toastHTML = '<span>Fin Invalido</span>';
       M.toast({html: toastHTML});
     return 

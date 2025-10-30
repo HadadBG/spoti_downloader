@@ -25,9 +25,20 @@ def download_video(url):
             'preferredcodec': 'mp3',  # Extraer como MP3
             'preferredquality': '320',  # Calidad del audio
         }],
+        'noplaylist':True
+        
+
     }
+
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+            ydl.download([url])
+    if os.path.exists('./python/canciones/'+url.split("tsearch:")[1]):
+        return
+    print("no descargue nadota")
+    nombre= url.split(":")[1]
+    just_name= nombre.split("feat")[0]
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download(["ytsearch:"+just_name])
 
 
 
