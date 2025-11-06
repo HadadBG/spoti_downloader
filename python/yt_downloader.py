@@ -13,7 +13,7 @@ import zipfile
 
 
 from yt_dlp.postprocessor import FFmpegPostProcessor
-FFmpegPostProcessor._ffmpeg_location.set(r'D:\programas\ffmpeg\bin')
+#FFmpegPostProcessor._ffmpeg_location.set(r'D:\programas\ffmpeg\bin')
 
 
 def download_video(url):
@@ -88,6 +88,8 @@ if __name__=="__main__":
     
     zip = zipfile.ZipFile("./songs_list/"+nombre+".zip", "w", zipfile.ZIP_STORED,compresslevel=1)
     for file in os.listdir("./python/normalizadas/"):
+        if ".git" in file:
+            continue
         zip.write("./python/normalizadas/"+file,arcname=file)
     zip.close()
     for file in os.listdir("./python/normalizadas/"):
