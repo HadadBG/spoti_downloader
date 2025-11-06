@@ -13,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.example.spotify.util.WriterThread;
 
 import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.File;
@@ -81,16 +82,18 @@ public class IndexController {
   }
   private final String codeVerifier= generateRandomString(64);
   @GetMapping("/")
-  public String IndexGET(Model model,@RequestParam(required = false) String code) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-    SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-
-    Proxy proxy = new Proxy(Type.HTTP, new InetSocketAddress("172.20.112.254", 9090));
-    requestFactory.setProxy(proxy);
+  public String IndexGET(Model model,@RequestParam(required = false) String code,HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    //SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+    String host = request.getHeader("Host");
+   // Proxy proxy = new Proxy(Type.HTTP, new InetSocketAddress("172.20.112.254", 9090));
+    //requestFactory.setProxy(proxy);
     byte[] hashed = sha256(codeVerifier);
     String codeChallenge = base64encode(hashed);
-   
+   String scheme = request.getScheme();
+   host=scheme+"://"+host;
+  System.out.println(host);
     String clientID ="59feae1e67864f53a889cdf5adf4191e";
-    String redirectUri = "http://127.0.0.1:8080";
+    String redirectUri = host;
     String scope = "user-read-private user-read-email playlist-read-private user-library-read";
     String authUrl ="https://accounts.spotify.com/authorize";
     String url =UriComponentsBuilder.fromUriString(authUrl)
