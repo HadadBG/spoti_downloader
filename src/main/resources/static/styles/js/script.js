@@ -463,7 +463,7 @@ console.log(songs.length)
        })
    document.getElementById("download-button").style.display="none";
    const div = document.getElementById("progress_section")
-  div.style.display="block";
+  div.style.display="flex";
   void div.offsetWidth;
 
   div.classList.add("visible")
