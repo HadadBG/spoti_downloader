@@ -1,4 +1,4 @@
-package com.example.spotify.cotroller;
+package com.example.musicHub.cotroller;
 
 
 
@@ -22,9 +22,8 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-
-import com.example.spotify.dto.WebSocketRequest;
-import com.example.spotify.dto.WebSocketResponse;
+import com.example.musicHub.dto.WebSocketRequest;
+import com.example.musicHub.dto.WebSocketResponse;
 
 
 

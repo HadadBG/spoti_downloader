@@ -1,4 +1,4 @@
-package com.example.spotify.config;
+package com.example.musicHub.config;
 
 import jakarta.servlet.ServletContext;
 import jakarta.websocket.server.ServerContainer;

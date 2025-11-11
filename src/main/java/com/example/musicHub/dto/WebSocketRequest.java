@@ -1,4 +1,4 @@
-package com.example.spotify.dto;
+package com.example.musicHub.dto;
 
 import java.util.ArrayList;
 

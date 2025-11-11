@@ -1,4 +1,4 @@
-package com.example.spotify.cotroller;
+package com.example.musicHub.cotroller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

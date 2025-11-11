@@ -1,4 +1,4 @@
-package com.example.spotify.util;
+package com.example.musicHub.util;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;

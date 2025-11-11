@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<version>0.0.1-SNAPSHOT</version>
-	<artifactId>spotify</artifactId>
-	<name>spotify</name>
+	<artifactId>musicHub</artifactId>
+	<name>musicHub</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -72,7 +72,7 @@
       <artifactId>exec-maven-plugin</artifactId>
       <version>3.5.1</version>
       <configuration>
-        <mainClass>com.example.spotify.SpotifyApplication</mainClass>
+        <mainClass>com.example.musicHub.MusicHubApplication</mainClass>
       </configuration>
     </plugin>
 	

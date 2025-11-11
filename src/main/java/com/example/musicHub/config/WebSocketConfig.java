@@ -1,4 +1,4 @@
-package com.example.spotify.config;
+package com.example.musicHub.config;
 
 
 
@@ -13,7 +13,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration;
 
-import com.example.spotify.util.CustomHandshakeHandler;
+import com.example.musicHub.util.CustomHandshakeHandler;
 
 
 

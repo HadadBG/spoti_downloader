@@ -1,4 +1,4 @@
-package com.example.spotify.cotroller;
+package com.example.musicHub.cotroller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.example.spotify.util.WriterThread;
+import com.example.musicHub.util.WriterThread;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.example.spotify;
+package com.example.musicHub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 
-public class SpotifyApplication {
+public class MusicHubApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(SpotifyApplication.class, args);
+		SpringApplication.run(MusicHubApplication.class, args);
 	}
 
 }
