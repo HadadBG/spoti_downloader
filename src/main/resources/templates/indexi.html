@@ -88,32 +88,71 @@
 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Aplicacion de Prueba</h4>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Aplicacion de Prueba</h4>
+
+    <!-- ====== PASO 1 ====== -->
+    <div id="paso1" class="wizard-step">
       <p>El proposito de esta aplicación es demostar mis conocimientos y habilidades, sin embargo derivado de la propia naturaleza de aplicación
         no es posible colocar de manera productiva el API de spotify, ya que necesita pasar por una auditoria por parte de spotify.
       </p>
-      <p>Sin embargo para demostar la funcionalidad de la api se colocan 2 usuarios que estan registrados como Testers , para que puedan ser usados.</p>
-  
-  <div class="input-field copyText">
-    <input id="textoCopiable" type="text" value="Texto a copiar" readonly>
-    <label for="textoCopiable">Usuario</label>
 
-    <!-- Ícono de copiado dentro del input -->
-    <a class="btn-flat waves-effect" 
-       onclick="copiarTexto()" 
-       style="position: absolute; right: 0; top: 0; margin-top: 12px; margin-right: 8px;">
-       <i class="fa-solid fa-copy"></i>
+      <p>Sin embargo para demostar la funcionalidad de la api se colocan 2 usuarios que estan registrados como Testers , para que puedan ser usados.</p>
+    <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichubuser1@gmail.com" readonly>
+        <label>Usuario 1</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichub1234" readonly>
+        <label>Password 1</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichubuser2@gmail.com" readonly>
+        <label>Usuario 2</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichub1234" readonly>
+        <label>Password 2</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- ====== PASO 2 ====== -->
+    <div id="paso2" class="wizard-step" style="display:none;">
+      <h2>hol</h2>
       
-    </a>
- 
-</div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+
   </div>
+
+  <div class="modal-footer">
+
+    <!-- Botón regresar -->
+    <a id="btnAtras" class="waves-effect btn-flat" style="display:none;">Atrás</a>
+
+    <!-- Botón siguiente -->
+    <a id="btnSiguiente" class="waves-effect btn-flat">Siguiente</a>
+
+    <!-- Botón cerrar (solo visible al final) -->
+    <a id="btnCerrar" class="modal-close waves-effect btn-flat" style="display:none;">Cerrar</a>
+
+  </div>
+</div>
       <!-- Main -->
       <article id="main">
         
