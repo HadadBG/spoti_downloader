@@ -30,7 +30,10 @@
     /></noscript>
   </head>
   <body class="index is-preload">
+  
     <div id="page-wrapper">
+          <!-- Modal Trigger -->
+  
       <!-- Header -->
       <header id="header" class="reveal alt">
         <h1 id="logo">
@@ -82,9 +85,38 @@
           </footer>
         </div>
       </section>
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Aplicacion de Prueba</h4>
+      <p>El proposito de esta aplicación es demostar mis conocimientos y habilidades, sin embargo derivado de la propia naturaleza de aplicación
+        no es posible colocar de manera productiva el API de spotify, ya que necesita pasar por una auditoria por parte de spotify.
+      </p>
+      <p>Sin embargo para demostar la funcionalidad de la api se colocan 2 usuarios que estan registrados como Testers , para que puedan ser usados.</p>
+  
+  <div class="input-field copyText">
+    <input id="textoCopiable" type="text" value="Texto a copiar" readonly>
+    <label for="textoCopiable">Usuario</label>
+
+    <!-- Ícono de copiado dentro del input -->
+    <a class="btn-flat waves-effect" 
+       onclick="copiarTexto()" 
+       style="position: absolute; right: 0; top: 0; margin-top: 12px; margin-right: 8px;">
+       <i class="fa-solid fa-copy"></i>
+      
+    </a>
+ 
+</div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
       <!-- Main -->
       <article id="main">
+        
         <header class="special container" style="padding-top: 1rem">
           <span style="font-size: 40px; letter-spacing: 3px"
             ><strong>Lista de Canciones</strong></span

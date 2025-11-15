@@ -1,3 +1,11 @@
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+
+
+
+
 $( "#main" ).css( "display", "none" );
 let refresh_token=localStorage.getItem("refresh_token")
 

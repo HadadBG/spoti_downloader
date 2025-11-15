@@ -485,3 +485,21 @@ th, td {
     padding: 0.5rem 0.7rem 0 0.7rem;
   }
 }
+.copyText{
+  width: 80%;
+  margin: 0 auto;
+}
+.modal-content>p{
+  margin-bottom: 0.4rem;
+  line-height: 1.4rem;
+}
+.modal-content>h4{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.modal-content>.copyText{
+  margin-top:1.5rem;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #952f57;
+}
