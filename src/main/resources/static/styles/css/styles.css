@@ -526,3 +526,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   height: 55vh;
 
 }
+.modal>.modal-content {
+  max-height: 87% !important;  /* Por defecto es 65% */
+  height: 87% !important;
+}
