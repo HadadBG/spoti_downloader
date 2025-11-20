@@ -523,10 +523,23 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   opacity: 1;
 }
 .wizard-step{
-  height: 55vh;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
 }
 .modal>.modal-content {
   max-height: 87% !important;  /* Por defecto es 65% */
   height: 87% !important;
+}
+img.image_modal{
+  max-height: 10rem;
+  width: auto;
+  margin: 0 auto;
+}
+img.image_modal2{
+  max-height: 15rem;
+  width: auto;
+  margin: 0 auto;
 }

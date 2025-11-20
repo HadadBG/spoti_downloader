@@ -37,7 +37,7 @@
       <!-- Header -->
       <header id="header" class="reveal alt">
         <h1 id="logo">
-          <a href="index.html"
+          <a href="./"
             >Music
             <span style="text-transform: capitalize; margin-left: 5px"
               >Hub</span
@@ -75,8 +75,8 @@
             <ul class="buttons stacked">
               <li>
                 <a
-                  th:href="${spotifyUri}"
-                  class="button fit scrolly spoti-button"
+                  href="#modal1"
+                  class="button fit scrolly spoti-button modal-trigger"
                   ><i class="fa-brands fa-spotify"></i
                   ><span>Iniciar Sesión</span>
                 </a>
@@ -85,7 +85,8 @@
           </footer>
         </div>
       </section>
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+  
+
 
   <!-- Modal Structure -->
 <div id="modal1" class="modal">
@@ -136,7 +137,11 @@
     <!-- ====== PASO 2 ====== -->
     <div id="paso2" class="wizard-step" style="display:none;">
       <h4>¿Como iniciar sesión?</h4>
-      <h2>hol</h2>
+       <p>Para iniciar sesión es necesario colocar alguno de los correos provistos con anterioridad.</p>
+      <img src="./styles/images/spoti_image.png" class="responsive-img image_modal" alt="Imagen demo">
+      <p>Posteriormete es necesario dar click en "Iniciar sesión con contraseña", y continuar con el login</p>
+      <img src="./styles/images/codigo.png" class="responsive-img image_modal2" alt="Imagen demo">
+   
       
     </div>
 
@@ -151,7 +156,7 @@
     <a id="btnSiguiente" class="waves-effect btn-flat">Siguiente</a>
 
     <!-- Botón cerrar (solo visible al final) -->
-    <a id="btnCerrar" class="modal-close waves-effect btn-flat" style="display:none;">Cerrar</a>
+    <a  th:href="${spotifyUri}" id="btnCerrar" class="modal-close waves-effect btn-flat" style="display:none;">¡¡Vamos!!</a>
 
   </div>
 </div>

@@ -40,7 +40,8 @@ $(document).ready(function () {
 $(document).on("click", ".copyBtn", function () {
     let texto = $(this).closest(".copyText").find(".textoCopiable").val();
     navigator.clipboard.writeText(texto);
-    M.toast({html: 'Copiado!'});
+    M.toast({html: 'Copiado!',
+    displayLength:1500});
 });
 
 
@@ -267,8 +268,8 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
             <p style="margin-bottom: 2rem;"></p>
             <p>
 					
-						que te parece si agregas algunas<br/>
-            y vuelves.
+						que te parece si agregas algunas a<br/>
+            tus me gusta y vuelves.
             </p>
              <p style="margin-bottom: 2rem;"></p>
             `)
@@ -515,12 +516,15 @@ console.log(songs.length)
   console.log(inicio)
   if(inicio > final || inicio<1 || isNaN(inicio)){
   let toastHTML = '<span>Inicio Invalido</span>';
-  M.toast({html: toastHTML});
+  M.toast({html: toastHTML,
+    displayLength:1500
+  });
     return
   }
   else if(final > songs.length || isNaN(final)) {
      let toastHTML = '<span>Fin Invalido</span>';
-      M.toast({html: toastHTML});
+      M.toast({html: toastHTML,
+    displayLength:1500});
     return 
 
   }
