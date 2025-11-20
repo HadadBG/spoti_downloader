@@ -1,3 +1,50 @@
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+
+$(document).ready(function () {
+
+    let step = 1;
+
+    $("#btnSiguiente").click(function () {
+
+        if (step === 1) {
+            $("#paso1").fadeOut(200, function () {
+                $("#paso2").fadeIn(250);
+            });
+
+            $("#btnAtras, #btnCerrar").fadeIn(150);
+            $("#btnSiguiente").css("display","none")
+
+            step = 2;
+        }
+    });
+
+    $("#btnAtras").click(function () {
+
+        if (step === 2) {
+            $("#paso2").fadeOut(200, function () {
+                $("#paso1").fadeIn(250);
+            });
+
+            $("#btnAtras, #btnCerrar").css("display","none");
+            $("#btnSiguiente").fadeIn(150);
+
+            step = 1;
+        }
+
+    });
+
+});
+$(document).on("click", ".copyBtn", function () {
+    let texto = $(this).closest(".copyText").find(".textoCopiable").val();
+    navigator.clipboard.writeText(texto);
+    M.toast({html: 'Copiado!',
+    displayLength:1500});
+});
+
+
 $( "#main" ).css( "display", "none" );
 let refresh_token=localStorage.getItem("refresh_token")
 
@@ -46,7 +93,7 @@ $("#reload_all").on("click",()=>{
 function formate_Date(date){
 
     let  aux= new Date(date);
-    let time = Math.round(new Date()-aux)/1000 ;
+    let time = Math.round(Math.round(new Date()-aux)/1000) ;
       if(time < 60){
         let cad = `hace ${time} segundo`
         if (time > 1){
@@ -204,13 +251,37 @@ async function  loadAsyncData() {
 
 if (!songs || typeof songs === "undefined" || songs == "undefined"){
     songs =clean_data(await getAllSongs())
-    console.log(songs)
+    if (songs.length != 0){
+   
     localStorage.setItem("songs",JSON.stringify(songs))
+    }
 
 }
+ if (songs.length == 0){
+ $( "#main_object" ).html(`
+        <p style="margin-bottom: 1.5rem;"></p>
+        <p>
+                        Bienvenido ${spoti_name}<br/> al parecer no tienes<br/>
+                          canciones
+						<br />
+					</p>
+            <p style="margin-bottom: 2rem;"></p>
+            <p>
+					
+						que te parece si agregas algunas a<br/>
+            tus me gusta y vuelves.
+            </p>
+             <p style="margin-bottom: 2rem;"></p>
+            `)
+     $( "#footer_main" ).html(``)
+     return
+ }
       document.getElementById("end_songs").value = songs.length; 
     let less_songs=songs.slice(0,10)
+    if(songs.length >=10){
+      //Agregamos la ultima cancion para saber los indices
         less_songs.push(songs[songs.length - 1])
+    }
        
       
      
@@ -259,7 +330,7 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
             <p style="margin-bottom: 2rem;"></p>
             <p>
 					
-						las canciones han sido compiladas
+						las canciones han sido recopiladas
             </p>
              <p style="margin-bottom: 2rem;"></p>
             `)
@@ -445,12 +516,15 @@ console.log(songs.length)
   console.log(inicio)
   if(inicio > final || inicio<1 || isNaN(inicio)){
   let toastHTML = '<span>Inicio Invalido</span>';
-  M.toast({html: toastHTML});
+  M.toast({html: toastHTML,
+    displayLength:1500
+  });
     return
   }
   else if(final > songs.length || isNaN(final)) {
      let toastHTML = '<span>Fin Invalido</span>';
-      M.toast({html: toastHTML});
+      M.toast({html: toastHTML,
+    displayLength:1500});
     return 
 
   }

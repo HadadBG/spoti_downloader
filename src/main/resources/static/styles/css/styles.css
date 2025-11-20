@@ -485,3 +485,61 @@ th, td {
     padding: 0.5rem 0.7rem 0 0.7rem;
   }
 }
+.copyText{
+  width: 80%;
+  margin: 0 auto;
+}
+.wizard-step>p{
+  margin-bottom: 0.4rem;
+  line-height: 1.4rem;
+}
+.wizard-step>h4{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.wizard-step>.copyText{
+  margin-top:1.5rem;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #952f57;
+}
+.modal {
+  max-height: 80% !important;  /* Por defecto es 65% */
+  height: 80% !important;
+}
+.modal>.modal-footer>.btn-flat{
+  margin-right: 1rem;
+  margin-top: 0;
+}
+.modal>.modal-footer{
+  vertical-align: top;
+}
+.tab-content {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.tab-content.active {
+  opacity: 1;
+}
+.wizard-step{
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+.modal>.modal-content {
+  max-height: 87% !important;  /* Por defecto es 65% */
+  height: 87% !important;
+}
+img.image_modal{
+  max-height: 10rem;
+  width: auto;
+  margin: 0 auto;
+}
+img.image_modal2{
+  max-height: 15rem;
+  width: auto;
+  margin: 0 auto;
+}

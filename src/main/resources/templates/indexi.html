@@ -30,11 +30,14 @@
     /></noscript>
   </head>
   <body class="index is-preload">
+  
     <div id="page-wrapper">
+          <!-- Modal Trigger -->
+  
       <!-- Header -->
       <header id="header" class="reveal alt">
         <h1 id="logo">
-          <a href="index.html"
+          <a href="./"
             >Music
             <span style="text-transform: capitalize; margin-left: 5px"
               >Hub</span
@@ -72,8 +75,8 @@
             <ul class="buttons stacked">
               <li>
                 <a
-                  th:href="${spotifyUri}"
-                  class="button fit scrolly spoti-button"
+                  href="#modal1"
+                  class="button fit scrolly spoti-button modal-trigger"
                   ><i class="fa-brands fa-spotify"></i
                   ><span>Iniciar Sesión</span>
                 </a>
@@ -82,9 +85,84 @@
           </footer>
         </div>
       </section>
+  
 
+
+  <!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    
+
+    <!-- ====== PASO 1 ====== -->
+    <div id="paso1" class="wizard-step">
+      <h4>Aplicacion de Prueba</h4>
+      <p>El proposito de esta aplicación es demostar mis conocimientos y habilidades, sin embargo derivado de la propia naturaleza de aplicación
+        no es posible colocar de manera productiva el API de spotify, ya que necesita pasar por una auditoria por parte de spotify.
+      </p>
+
+      <p>Sin embargo para demostar la funcionalidad de la api se colocan 2 usuarios que estan registrados como Testers , para que puedan ser usados.</p>
+    <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichubuser1@gmail.com" readonly>
+        <label>Usuario 1</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichub1234" readonly>
+        <label>Password 1</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichubuser2@gmail.com" readonly>
+        <label>Usuario 2</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+
+      <div class="input-field copyText">
+        <input class="textoCopiable" type="text" value="musichub1234" readonly>
+        <label>Password 2</label>
+        <a class="btn-flat waves-effect copyBtn" style="position:absolute; right:0; top:0; margin-top:12px; margin-right:8px;">
+          <i class="fa-solid fa-copy"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- ====== PASO 2 ====== -->
+    <div id="paso2" class="wizard-step" style="display:none;">
+      <h4>¿Como iniciar sesión?</h4>
+       <p>Para iniciar sesión es necesario colocar alguno de los correos provistos con anterioridad.</p>
+      <img src="./styles/images/spoti_image.png" class="responsive-img image_modal" alt="Imagen demo">
+      <p>Posteriormete es necesario dar click en "Iniciar sesión con contraseña", y continuar con el login</p>
+      <img src="./styles/images/codigo.png" class="responsive-img image_modal2" alt="Imagen demo">
+   
+      
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+    <!-- Botón regresar -->
+    <a id="btnAtras" class="waves-effect btn-flat" style="display:none;">Atrás</a>
+
+    <!-- Botón siguiente -->
+    <a id="btnSiguiente" class="waves-effect btn-flat">Siguiente</a>
+
+    <!-- Botón cerrar (solo visible al final) -->
+    <a  th:href="${spotifyUri}" id="btnCerrar" class="modal-close waves-effect btn-flat" style="display:none;">¡¡Vamos!!</a>
+
+  </div>
+</div>
       <!-- Main -->
       <article id="main">
+        
         <header class="special container" style="padding-top: 1rem">
           <span style="font-size: 40px; letter-spacing: 3px"
             ><strong>Lista de Canciones</strong></span
