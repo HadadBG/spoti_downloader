@@ -18,6 +18,7 @@ from yt_dlp.postprocessor import FFmpegPostProcessor
 
 def download_video(url):
     ydl_opts = {
+        'cookiefile':'./python/youtube_cookies.txt',
         'format': 'bestaudio/best',  # Descargar el mejor audio
         'outtmpl': './python/canciones/'+url.split("tsearch:")[1],  # Guardar como video.mp4
         'postprocessors': [{
