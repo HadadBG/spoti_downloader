@@ -2,7 +2,7 @@ HELP.md
 target/
 SL_*
 *.mp3
-**/application.properties
+#**/application.properties
 !.mvn/wrapper/maven-wrapper.jar
 **/application.properties
 !**/src/main/**/target/
