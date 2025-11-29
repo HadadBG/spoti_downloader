@@ -337,7 +337,7 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
      $( "#footer_main" ).html(``)
   //console.log("|"+client_id+"|")
 stompClient = new StompJs.Client({
-    brokerURL: 'ws://'+ window.location.host+'/websocket?userId=' + client_id,
+    brokerURL: 'wss://'+ window.location.host+'/websocket?userId=' + client_id,
     //debug: (msg) => console.log('[STOMP]', msg),
     reconnectDelay: 5000,
     

@@ -60,26 +60,22 @@ public class IndexController {
   }
  
   // A GET request to the 'welcome' endpoint
-  private String generateRandomString(int len){
+private String generateRandomString(int len){
     SecureRandom random = new SecureRandom();
-    ArrayList<Integer> values= new ArrayList<Integer>();
-    for (int i=0 ; i<len;i++){
-      byte[] bucket = new byte[1];
-      random.nextBytes(bucket);
-      int value=0;
-      for (byte b : bucket) {
-        value = (value << 8) + (b & 0xFF);
-      }
-      values.add(value);
-    }
+    final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    int n = chars.length();
 
-    String salida ="";
-    final String posisble = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (int randomInt : values){
-      salida+=posisble.charAt(randomInt%posisble.length());
+    StringBuilder sb = new StringBuilder(len);
+    byte[] buffer = new byte[len];
+
+    random.nextBytes(buffer);
+
+    for (int i = 0; i < len; i++) {
+        int v = buffer[i] & 0xFF;
+        sb.append(chars.charAt(v % n));
     }
-    return salida;
-  }
+    return sb.toString();
+}
   private final String codeVerifier= generateRandomString(64);
   @GetMapping("/")
   public String IndexGET(Model model,@RequestParam(required = false) String code,HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
