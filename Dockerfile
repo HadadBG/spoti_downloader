@@ -13,25 +13,33 @@ RUN mvn -B clean package -DskipTests
 
 
 # ==========================
-# STAGE 2: Producción (Ubuntu Jammy)
+# STAGE 2: Producción
 # ==========================
 FROM eclipse-temurin:21-jre AS runtime
 
-# Instalar Python, pip y ffmpeg
+# Instalar Python, pip, venv y ffmpeg
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip ffmpeg && \
+    apt-get install -y python3 python3-pip python3-venv ffmpeg && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copiar jar desde el build
+# Crear entorno virtual
+RUN python3 -m venv /opt/venv
+
+# Activar entorno virtual
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copiar JAR
 COPY --from=build /app/target/*.jar app.jar
 
-# Python requirements
+# Copiar requirements e instalarlos en el venv
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt || echo "No requirements.txt found"
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY songs_list ./songs_list
 COPY python ./python
+
 EXPOSE 8080
 
 CMD ["java", "-jar", "app.jar"]

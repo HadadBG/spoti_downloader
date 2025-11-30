@@ -52,7 +52,6 @@ body.index #main {
 }
 .song-list>tbody>tr{
 	display: flex;
-	flex: 0 0 100%;
 	width: 100%;
 	margin-bottom: 1rem;
 
@@ -455,23 +454,44 @@ th, td {
     display: none;
   }
 }
-@media (max-width: 390px) {
-  .song-list_data.duration,.song-list_data.date,.song-list_data.title>img{
+@media (max-width: 510px) {
+  .song-list_data.title>img{
+    display: none;
+  }
+   .title>div{
+    width: 100%;
+  }
+  
+}
+
+@media (max-width: 600px) {
+
+  .song-list_data.duration,.song-list_data.date{
     
     display: none;
   }
+  .number{
+   min-width: unset;
+   width: 15%;
+   text-align: center;
+  }
   .song-list_data.title{
     padding-right: 0;
-    min-width: 250px;
-    width: 250px;
+   min-width: unset;
+
     font-size: 1rem;
-  
+    
     justify-content: center;
     text-align: center;
+    max-width: unset;
+    width: 85%;
+   
+
   }
-  .song-list_data.title>div{
-    width: calc(100% - 15px);
+  .title>div{
+    width: 85%;
   }
+
   .input_container{
     gap: 0.3rem;
   }
@@ -534,7 +554,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
   height: 87% !important;
   
 }
-@media (max-width: 390px) {
+@media (max-width: 600px) {
 .modal>.modal-content{
   overflow-y: scroll;
 }
