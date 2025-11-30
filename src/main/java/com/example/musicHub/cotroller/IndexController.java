@@ -84,8 +84,8 @@ private String generateRandomString(int len){
     //requestFactory.setProxy(proxy);
     byte[] hashed = sha256(codeVerifier);
     String codeChallenge = base64encode(hashed);
-   String scheme = request.getScheme();
-   host=scheme+"://"+host;
+
+   host="https://"+host;
   System.out.println(host);
     String clientID ="59feae1e67864f53a889cdf5adf4191e";
     String redirectUri = host;

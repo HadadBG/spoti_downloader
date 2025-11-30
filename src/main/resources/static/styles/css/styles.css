@@ -532,6 +532,47 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .modal>.modal-content {
   max-height: 87% !important;  /* Por defecto es 65% */
   height: 87% !important;
+  
+}
+@media (max-width: 390px) {
+.modal>.modal-content{
+  overflow-y: scroll;
+}
+.wizard-step{
+  display: block;
+
+}
+.copyText{
+  width: 100%;
+  display: flex;
+}
+.copyText>input[type=text]:not(.browser-default){
+  font-size: 14px;
+}
+ .btn-flat i {
+  font-size: 0.8rem;
+ }
+ .copyBtn{
+      transform: translateX(15px) translateY(-4px);
+
+ }
+ #toast-container {
+   
+
+
+
+  width: 50% ;
+  min-width: 50%;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  bottom: 17% !important;
+
+
+}
+#toast-container>.toast{
+  width: 100%;
+ 
+}
 }
 img.image_modal{
   max-height: 10rem;

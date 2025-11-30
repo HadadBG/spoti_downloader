@@ -69,7 +69,7 @@ public class WebSocketReponseController {
    builder= new ProcessBuilder(new String[] { "cmd.exe", "/c", "python \"./python/yt_downloader.py\" \"" + "./songs_list/"+id.replace("zip","txt") + "\""  });
     }
     else{
-    builder = new ProcessBuilder(new String[] { "python","python/yt_downloader.py", "./songs_list/"+id.replace("zip","txt")  });
+    builder = new ProcessBuilder(new String[] { "python3","python/yt_downloader.py", "./songs_list/"+id.replace("zip","txt")  });
    
 
     }
