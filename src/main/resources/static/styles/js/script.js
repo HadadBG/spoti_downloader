@@ -1,5 +1,5 @@
 
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
   });
@@ -46,7 +46,7 @@ $(document).on("click", ".copyBtn", function () {
 });
 
 
-//$( "#main" ).css( "display", "none" );
+$( "#main" ).css( "display", "none" );
 let refresh_token=localStorage.getItem("refresh_token")
 
 if (!refresh_token || typeof refresh_token === "undefined" || refresh_token == "undefined"){

@@ -18,7 +18,7 @@ public class WriterThread extends Thread {
 
     @Override
     public void run() {
-        final int BUFFER_SIZE = 8192; // 8KB (ó 16K o 64K)
+        final int BUFFER_SIZE = 1048576; // 1MB
         byte[] buffer = new byte[BUFFER_SIZE];
 
         try (FileInputStream fis = new FileInputStream(file)) {
