@@ -19,7 +19,8 @@ from yt_dlp.postprocessor import FFmpegPostProcessor
 def download_video(url):
     ydl_opts = {
         'cookiefile':'./python/youtube_cookies.txt',
-        'format': 'bestaudio/best',  # Descargar el mejor audio
+        'format': 'bestaudio',  # Descargar el mejor audio
+        'format-sort':'+size',
         'outtmpl': './python/canciones/'+url.split("tsearch:")[1],  # Guardar como video.mp4
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
@@ -46,6 +47,7 @@ def download_video(url):
 
 #lista=["jNY_wLukVW0"]    #["sElE_BfQ67s","7iVXEMyQnpA","50rlHVe6g9Q"] #"sElE_BfQ67s",
 def get_songs(raw_string):
+    print(raw_string)
     close_quote= False
     aux=""
     songs_array = []
@@ -57,8 +59,10 @@ def get_songs(raw_string):
         elif character ==",":
             songs_array.append(aux)
             aux=""
+    print(aux)
     if aux != "":
         songs_array.append(aux)
+    print(songs_array)
     return songs_array
 
 
@@ -67,11 +71,13 @@ if __name__=="__main__":
     
     normalizer = ffmpeg_normalize.FFmpegNormalize(audio_codec="mp3",dynamic=True,sample_rate=48000,progress=True)
  
-    
-    with open (sys.argv[1],encoding="UTF-8")as file:
-        raw_songs= file.readline()
+    if ".txt" in sys.argv[1]:
+        with open (sys.argv[1],encoding="UTF-8")as file:
+            raw_songs= file.readline()
         
-    songs= get_songs(raw_songs)
+        songs= get_songs(raw_songs)
+    else:
+        songs=[sys.argv[1]]
     
     for index,song in enumerate(songs) :
         print("LOG:"+str(index+1)  )
@@ -84,9 +90,10 @@ if __name__=="__main__":
     normalizer.run_normalization()
     for file in os.listdir("./python/canciones/"):
         os.remove("./python/canciones/"+file)
-    
-    nombre=os.path.basename(sys.argv[1]).split(".")[0]  
-    
+    if ".txt" in sys.argv[1]:
+        nombre=os.path.basename(sys.argv[1]).split(".")[0]  
+    else:
+        nombre =re.sub("[\\/:*?\"<>|]","#",sys.argv[1])
     zip = zipfile.ZipFile("./songs_list/"+nombre+".zip", "w", zipfile.ZIP_STORED,compresslevel=1)
     for file in os.listdir("./python/normalizadas/"):
         if ".git" in file:

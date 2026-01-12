@@ -604,3 +604,25 @@ img.image_modal2{
   width: auto;
   margin: 0 auto;
 }
+
+.searcher_container{
+  margin:  3rem;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+
+  border-bottom: 1px solid #952f57;
+    -webkit-box-shadow: 0 1px 0 0 #952f57;
+    box-shadow: 0 1px 0 0 #952f57;
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label{
+  color: #952f57;
+}
+.searcher_container .row{
+
+  padding-left:  3rem;
+  padding-right: 3rem;
+}
+.searcher_container>.row{
+  margin-top: 2rem;
+}
