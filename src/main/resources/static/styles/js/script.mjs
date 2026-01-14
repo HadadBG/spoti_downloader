@@ -1,4 +1,4 @@
-
+import { getAccessToken } from "./oauth.mjs";
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
@@ -47,14 +47,11 @@ $(document).on("click", ".copyBtn", function () {
 
 
 $( "#main" ).css( "display", "none" );
-let refresh_token=localStorage.getItem("refresh_token")
-
-if (!refresh_token || typeof refresh_token === "undefined" || refresh_token == "undefined"){
-    refresh_token=null
-}
+var client_id,access_token
+[client_id,access_token]= await getAccessToken(spotidata)
 
 
-var client_id = localStorage.getItem("client_id") == undefined ?null:localStorage.getItem("client_id")
+
 var access_token =null
 var all_songs = []
 var asyncRequest;
@@ -163,58 +160,15 @@ function clean_data (songs){
     return obj
   })
 }
-async function  getRefresh() {
-
-  let body =   await fetch("https://accounts.spotify.com/api/token", {
-  method: "POST",
-  body: new URLSearchParams(spotidata),
-  headers: {
-    "Content-type": "application/x-www-form-urlencoded"
-  }
-})
-    let json = await body.json()
- 
-    
-    localStorage.setItem("client_id",spotidata.client_id)
-    localStorage.setItem("refresh_token",json.refresh_token)
-    
-    access_token = json.access_token
-    console.log("refres:"+access_token)
-    client_id = spotidata.client_id
-    return
-}
 
 var stompClient;
-async function getAccessToken(){
-    if( refresh_token ==null){
-    await getRefresh()
-}
-else{
-    let body = await fetch("https://accounts.spotify.com/api/token", {
-  method: "POST",
-  body: new URLSearchParams({
-    grant_type: 'refresh_token',
-    refresh_token,
-    client_id
 
-  }),
-  headers: {
-    "Content-type": "application/x-www-form-urlencoded"
-  }
-})
-
-    let json = await body.json()
-     localStorage.setItem("refresh_token",json.refresh_token)
- access_token = json.access_token
-}
-
-}
 async function  getAllSongs() {
  
   all_songs=[]
-  offset=0
+  let offset=0
   while (true){
-    body = await fetch(`https://api.spotify.com/v1/me/tracks?offset=${offset}&limit=50`, {
+  let  body = await fetch(`https://api.spotify.com/v1/me/tracks?offset=${offset}&limit=50`, {
   method: "GET",
 
   headers: {
@@ -222,7 +176,7 @@ async function  getAllSongs() {
     'Content-Type': 'application/x-www-form-urlencoded'
   }
        })
-       json= await body.json()
+  let  json= await body.json()
        all_songs.push(...json.items)
        if ((offset+50) >=  json.total){
         break
@@ -234,7 +188,7 @@ async function  getAllSongs() {
 }
 var songs
 async function  loadAsyncData() {
-    await getAccessToken()
+   [client_id,access_token] =await getAccessToken()
     console.log(access_token)
       let body = await fetch("https://api.spotify.com/v1/me", {
   method: "GET",
@@ -317,7 +271,7 @@ if (!songs || typeof songs === "undefined" || songs == "undefined"){
                 `
       })
       
-      songs_html = less_songs.join("")
+let       songs_html = less_songs.join("")
       $("#songs-data").html(songs_html)
    
        $( "#main" ).css( "display", "block" );

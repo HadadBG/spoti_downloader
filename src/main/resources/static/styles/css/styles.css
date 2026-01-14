@@ -54,6 +54,8 @@ body.index #main {
 	display: flex;
 	width: 100%;
 	margin-bottom: 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 
 }
 .song-list>thead{
@@ -76,18 +78,21 @@ body.index #main {
 .number{
 	min-width: 3rem;
   margin: auto;
+  line-height: 1;
 }
 .song-list>tbody{
 	display: flex;
 	flex-direction: column;
 }
 .title{
+  align-items: center;
 	max-width: 50% ;
 	display: flex;
 	min-width: 290px;
 	width: 290px;
   flex-grow: 1;
 	padding-right: 1.5rem;
+  line-height: 1;
 	
 }
 .title>div{
@@ -524,8 +529,8 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     border-color: #952f57;
 }
 .modal {
-  max-height: 80% !important;  /* Por defecto es 65% */
-  height: 80% !important;
+  max-height: 83% !important;  /* Por defecto es 65% */
+  height: 83% !important;
 }
 .modal>.modal-footer>.btn-flat{
   margin-right: 1rem;
@@ -550,14 +555,16 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 }
 .modal>.modal-content {
-  max-height: 87% !important;  /* Por defecto es 65% */
-  height: 87% !important;
+  max-height: 88% !important;  /* Por defecto es 65% */
+  height: 88% !important;
+  overflow-y: auto;
   
 }
-@media (max-width: 600px) {
-.modal>.modal-content{
-  overflow-y: scroll;
+.modal{
+  overflow-y: unset;
 }
+@media (max-width: 600px) {
+
 .wizard-step{
   display: block;
 
