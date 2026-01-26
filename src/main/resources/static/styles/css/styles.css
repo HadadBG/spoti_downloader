@@ -615,7 +615,7 @@ img.image_modal2{
 .searcher_container{
   margin:  3rem;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]){
+input[type=text]:not(.browser-default):focus:not([readonly]),input.valid[type=text]:not(.browser-default){
 
   border-bottom: 1px solid #952f57;
     -webkit-box-shadow: 0 1px 0 0 #952f57;

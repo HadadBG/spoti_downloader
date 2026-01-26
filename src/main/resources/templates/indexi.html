@@ -459,15 +459,15 @@
      
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="text" class="validate">
-          <label for="password">CANCION A BUSCAR</label>
+          <input id="toDownload" type="text" class="validate">
+          <label for="toDownload">CANCION A BUSCAR</label>
         </div>
       </div>
       
       
     </form>
   </div>
-         <div id="download-button" class="download-button_div">
+         <div id="download-one" class="download-button_div">
           <button class="download-button">Descargar Canción</button>
         </div>
         </div>
@@ -506,7 +506,9 @@
     <script th:src="@{/styles/js/breakpoints.min.js}"></script>
     <script th:src="@{/styles/js/util.js}"></script>
     <script th:src="@{/styles/js/main.js}"></script>
-    <script type="module" th:src="@{/styles/js/oauth.mjs}"></script>
+    <script type="module" th:src="@{/styles/js/modules/oauth.mjs}"></script>
+    <script type="module" th:src="@{/styles/js/modules/songs_table.mjs}"></script>
+    <script type="module" th:src="@{/styles/js/modules/downloader_initializer.mjs}"></script>
     <script type ="module" th:src="@{/styles/js/script.mjs}"></script>
   </body>
 </html>

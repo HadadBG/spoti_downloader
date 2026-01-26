@@ -1,5 +1,5 @@
 async function  getRefresh(spotidata) {
-  console.log(spotidata)
+  //Spotidata is a variable filled by the backend
   let body =   await fetch("https://accounts.spotify.com/api/token", {
   method: "POST",
   body: new URLSearchParams(spotidata),
