@@ -126,12 +126,14 @@ private String generateRandomString(int len){
     String id_spo =id_request.replace("\"", "");
   
    
-    
-    
-    
-  
-    String id= "SL_"+id_spo+".zip";
-
+    String id="";
+    if(id_spo.startsWith(">")){
+      
+      id=id_spo.replace(">", "")+".zip";
+    } 
+    else{
+      id = "SL_"+id_spo+".zip";
+    }
     File file = new File("./songs_list/"+id);
    System.out.println("id:"+id);
  if( !file.exists() ) { 

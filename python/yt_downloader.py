@@ -22,6 +22,9 @@ def download_video(url):
         'format': 'bestaudio',  # Descargar el mejor audio
         'format-sort':'+size',
         'outtmpl': './python/canciones/'+url.split("tsearch:")[1],  # Guardar como video.mp4
+      
+    'remote_components':['ejs:github'],
+    'js_runtimes': {'deno': {'path': None}, 'node': {'path': r'D:\programas\node\node-v20.15.1-win-x64\node.exe'}},
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',  # Extraer como MP3
@@ -34,8 +37,9 @@ def download_video(url):
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
-    if os.path.exists('./python/canciones/'+url.split("tsearch:")[1]):
+    if os.path.exists('./python/canciones/'+url.split("tsearch:")[1]+".mp3"):
         return
+    print(url)
     print("no descargue nadota")
     nombre= url.split(":")[1]
     just_name= nombre.split("feat")[0]
@@ -78,7 +82,8 @@ if __name__=="__main__":
         songs= get_songs(raw_songs)
     else:
         songs=[sys.argv[1]]
-    just_one = len(songs) ==1
+    just_one = (len(songs) ==1)
+
     for index,song in enumerate(songs) :
         print("LOG:"+str(index+1)  )
         auxi = re.sub("[\\/:*?\"<>|]","#",song)

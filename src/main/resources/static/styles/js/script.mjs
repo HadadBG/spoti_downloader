@@ -1,7 +1,9 @@
 import { loadAsyncData } from "./modules/songs_table.mjs";
+
 import {initialize_stomp } from "./modules/downloader_initializer.mjs"
 const uuid = crypto.randomUUID();
 $(document).ready(function () {
+  
     var elems = document.querySelectorAll('.modal');
     M.Modal.init(elems);
     let step = 1;
@@ -132,7 +134,9 @@ initialize_stomp(stompClient_one,uuid,$("#toDownload").val(),1,1)
 
 
 $( "#download-button" ).on( "click", function() {
- stompClient_all = new StompJs.Client({
+ 
+ 
+  stompClient_all = new StompJs.Client({
     brokerURL: 'wss://'+ window.location.host+'/websocket?userId=' + client_id,
     //debug: (msg) => console.log('[STOMP]', msg),
     reconnectDelay: 5000,
@@ -173,9 +177,11 @@ initialize_stomp(stompClient_all,client_id,filtered_songs,inicio,final)
   
 
 
-  
+
 } );  
+
 }
 prepareDownload()
+
 }
 

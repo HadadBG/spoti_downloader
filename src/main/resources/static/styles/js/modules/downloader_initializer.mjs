@@ -1,16 +1,23 @@
 export function initialize_stomp(stompClient,client_id,content_to_publish,inicio,final){
 const div = document.getElementById("progress_section")
-
+var just_one = false;
+var cancion
+const regex=/[\\/:*?\"<>|]/gi
 if (final == inicio ){
-
+  cancion=content_to_publish[0].substring(1,content_to_publish[0].length-1).replaceAll(regex,"#")
   if(!Array.isArray(content_to_publish)){
+    cancion=content_to_publish
       const emptyArray = new Array();
       emptyArray.push('"'+content_to_publish+'"')
       content_to_publish=emptyArray;
+      
+      
   }
+  just_one=true;
+
 }
 
- console.log(div.style.display)
+ 
   if(div.style.display != "none" && div.style.display != ""){
      M.toast({html: 'No se pueden descargar mas de un archivo al mismo tiempo',
     displayLength:1500});
@@ -20,7 +27,7 @@ div.style.display="flex";
 void div.offsetWidth;
 
   div.classList.add("visible")
-div.scrollIntoView({ behavior: "smooth", block: "start" });
+
 stompClient.onStompError = (frame) => {
   console.error('Broker reported error: ' + frame.headers['message']);
   console.error('Additional details: ' + frame.body);
@@ -31,6 +38,14 @@ var bar_download = new ProgressBar.Path('#progress-path', {
   easing: 'easeInOut',
   duration: 1500
 });
+ var headerOffset = document.getElementById('header').offsetHeight;
+    var elementPosition = div.getBoundingClientRect().top;
+    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+    window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+    });
 var animation=0;
 var increment =0;
 var total_canciones
@@ -95,7 +110,12 @@ stompClient.onConnect = (frame) => {
        var a = document.createElement("a"),
         url = URL.createObjectURL(responseData);
         a.href = url;
-        a.download = "SL_"+client_id+"s.zip";
+        if(just_one){
+          a.download=cancion+".zip"
+        }
+        else{
+         a.download = "SL_"+client_id+".zip";
+        }
         document.body.appendChild(a);
         a.click();
         setTimeout(function() {
@@ -107,16 +127,28 @@ stompClient.onConnect = (frame) => {
         }
         asyncRequest.setRequestHeader("Content-Type", "application/json")
         console.log(client_id)
-        asyncRequest.send(JSON.stringify(client_id));
+        if(just_one){
+         
+          
+          
+          console.log(cancion)
+          asyncRequest.send(">"+cancion);
+          
+        
+        }
+        else{
+          asyncRequest.send(JSON.stringify(client_id));
+        }
     }
     catch(exception)
    {
     alert("Request failed");
+    console.log(exception)
    }
         }
         // Luego puedes usar ese sessionId para otras suscripciones
     });
-  console.log(content_to_publish)
+
 stompClient.publish({
     destination:"/ws_requests/download_sl",
     body:JSON.stringify({"content": content_to_publish, "iniSong":inicio,"endSong":final}),
