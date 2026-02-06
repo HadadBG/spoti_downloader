@@ -1,5 +1,7 @@
-import { loadAsyncData } from "./modules/songs_table.mjs";
+console.log("hiiii")
 
+import { loadAsyncData } from "./modules/songs_table.mjs";
+console.log("hoooo")
 import {initialize_stomp } from "./modules/downloader_initializer.mjs"
 const uuid = crypto.randomUUID();
 $(document).ready(function () {
@@ -38,6 +40,7 @@ $(document).ready(function () {
     });
 
 });
+console.log("huuuu")
 $(document).on("click", ".copyBtn", function () {
     let texto = $(this).closest(".copyText").find(".textoCopiable").val();
     navigator.clipboard.writeText(texto);
@@ -112,25 +115,15 @@ if (spotidata != null  || client_id !=null){
   <div class="sk-cube3 sk-cube"></div>
 </div>
 `)
+     
+console.log("heeee")
 async function prepareDownload(){
   let stompClient_all;
 [client_id,songs] = await loadAsyncData()
  
 
      
-$( "#download-one" ).on( "click", function() {
-  let stompClient_one; 
-   stompClient_one = new StompJs.Client({
-    brokerURL: 'wss://'+ window.location.host+'/websocket?userId=' + uuid,
-    //debug: (msg) => console.log('[STOMP]', msg),
-    reconnectDelay: 5000,
-    
-  
 
-});
-initialize_stomp(stompClient_one,uuid,$("#toDownload").val(),1,1)
-  
-})
 
 
 $( "#download-button" ).on( "click", function() {
@@ -181,7 +174,21 @@ initialize_stomp(stompClient_all,client_id,filtered_songs,inicio,final)
 } );  
 
 }
+console.log("hooooasdsa")
 prepareDownload()
-
 }
 
+$( "#download-one" ).on( "click", function() {
+  console.log("Buenas")
+  let stompClient_one; 
+   stompClient_one = new StompJs.Client({
+    brokerURL: 'wss://'+ window.location.host+'/websocket?userId=' + uuid,
+    //debug: (msg) => console.log('[STOMP]', msg),
+    reconnectDelay: 5000,
+    
+  
+
+});
+initialize_stomp(stompClient_one,uuid,$("#toDownload").val(),1,1)
+  
+})

@@ -18,13 +18,13 @@ from yt_dlp.postprocessor import FFmpegPostProcessor
 
 def download_video(url):
     ydl_opts = {
-        'cookiefile':'./python/youtube_cookies.txt',
+        #'cookiefile':'./python/youtube_cookies.txt',
         'format': 'bestaudio',  # Descargar el mejor audio
         'format-sort':'+size',
         'outtmpl': './python/canciones/'+url.split("tsearch:")[1],  # Guardar como video.mp4
       
     'remote_components':['ejs:github'],
-    'js_runtimes': {'deno': {'path': None}, 'node': {'path': r'D:\programas\node\node-v20.15.1-win-x64\node.exe'}},
+    'js_runtimes': {'deno': {'path': None}, 'node': {'path': None}},
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',  # Extraer como MP3
