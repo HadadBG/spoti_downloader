@@ -3,6 +3,7 @@ target/
 SL_*
 *.mp3
 **/application-dev.properties
+*.zip
 !.mvn/wrapper/maven-wrapper.jar
 **/application.properties
 !**/src/main/**/target/

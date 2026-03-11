@@ -5,9 +5,12 @@ package com.example.musicHub.cotroller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -36,31 +39,41 @@ public class WebSocketReponseController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
+  private static Boolean checkIsDifferent(File fileToCheck, ArrayList<String> songs) throws IOException{
+    FileReader reader = new FileReader(fileToCheck);
+    Boolean result;
+   
 
+    result = !Files.readString(fileToCheck.toPath()).equals( songs.toString());
+  
+  
+    reader.close();
+    return result;
+  }
 
   @MessageMapping("/download_sl")
   public void download_songs(WebSocketRequest songsRequest,Principal principal,SimpMessageHeaderAccessor headerAccessor) throws Exception {
    // String topic = "/ws_messages/download_file";
     System.out.println("Conectado a web socket .... "+ principal.getName());
-    int initialSong=songsRequest.getIniSong()-1;
-    int finalSong =songsRequest.getEndSong();
+  
     ArrayList<String> songs= songsRequest.getContent();
    String id_spo = principal.getName();
-  System.out.println(initialSong);
-  System.out.println(finalSong);
-    songs=new ArrayList<String>(songs.subList(initialSong, finalSong));
+ 
+   
   
     String id= "SL_"+id_spo+".zip";
 
     File file = new File("./songs_list/"+id);
     File file_txt = new File("./songs_list/"+id.replace("zip","txt"));
-   if( !file_txt.exists() ){
+   if( !file_txt.exists() || checkIsDifferent(file_txt,songs)){
+    Files.deleteIfExists(file_txt.toPath());
+    Files.deleteIfExists(file.toPath());
     BufferedWriter writer = new BufferedWriter(new FileWriter(file_txt,StandardCharsets.UTF_8));
    
     writer.write(songs.toString());
     writer.close();
    }
- if( !file.exists() ) { 
+ if( !file.exists()   ) { 
     System.out.println("downloading..");
 	String osName = System.getProperty("os.name");
 	System.out.println(osName);

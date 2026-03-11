@@ -4,6 +4,8 @@ var just_one = false;
 var cancion
 const regex=/[\\/:*?\"<>|]/gi
 if (final == inicio ){
+  console.log(cancion)
+  console.log(content_to_publish)
   cancion=content_to_publish[0].substring(1,content_to_publish[0].length-1).replaceAll(regex,"#")
   if(!Array.isArray(content_to_publish)){
     cancion=content_to_publish
@@ -96,7 +98,7 @@ stompClient.onConnect = (frame) => {
           try
     {
         let asyncRequest = new XMLHttpRequest();
-
+        stompClient.deactivate()
         asyncRequest.open('POST', '/download_songs', true);    //   /Test is url to Servlet!
         asyncRequest.responseType="blob";
         asyncRequest.onload=()=>{
@@ -151,7 +153,7 @@ stompClient.onConnect = (frame) => {
 
 stompClient.publish({
     destination:"/ws_requests/download_sl",
-    body:JSON.stringify({"content": content_to_publish, "iniSong":inicio,"endSong":final}),
+    body:JSON.stringify({"content": content_to_publish}),
   
   })
    

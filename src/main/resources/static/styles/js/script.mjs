@@ -3,6 +3,7 @@ console.log("hiiii")
 import { loadAsyncData } from "./modules/songs_table.mjs";
 console.log("hoooo")
 import {initialize_stomp } from "./modules/downloader_initializer.mjs"
+
 const uuid = crypto.randomUUID();
 $(document).ready(function () {
   
@@ -162,6 +163,7 @@ console.log(songs.length)
     return 
 
   }
+  filtered_songs= filtered_songs.slice(inicio-1,final)
 
 initialize_stomp(stompClient_all,client_id,filtered_songs,inicio,final)  
    document.getElementById("download-button").style.display="none";
@@ -189,6 +191,19 @@ $( "#download-one" ).on( "click", function() {
   
 
 });
+
 initialize_stomp(stompClient_one,uuid,$("#toDownload").val(),1,1)
   
 })
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    if(document.getElementById('toDownload').value != ""){
+
+     document.getElementById('download-one').click() 
+    }
+
+   event.preventDefault();
+    // Aquí puedes llamar a tu función para procesar el dato
+  }
+   // Evita la recarga
+});
