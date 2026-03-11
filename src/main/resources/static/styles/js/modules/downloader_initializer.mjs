@@ -88,13 +88,10 @@ stompClient.onConnect = (frame) => {
           }
         }
         else if(response.stat =="END"){
-          document.getElementById("download-button").style.display="flex";
-        const div = document.getElementById("progress_section")
-        div.style.display="none";
-        void div.offsetWidth;
-
-        div.classList.add("visible")
-        document.getElementById("main").scrollIntoView({ behavior: "smooth", block: "start" });
+            titulo_download.innerHTML = `Finalizando proceso ...`
+            percent_download.innerHTML="100%"
+            bar_download.animate(1)
+          
           try
     {
         let asyncRequest = new XMLHttpRequest();
@@ -124,6 +121,13 @@ stompClient.onConnect = (frame) => {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
         },0);  
+        document.getElementById("download-button").style.display="flex";
+        const div = document.getElementById("progress_section")
+        div.style.display="none";
+        void div.offsetWidth;
+
+        div.classList.add("visible")
+        document.getElementById("banner").scrollIntoView({ behavior: "smooth", block: "start" });
       console.log("Finisheeeed")
       }
         }
