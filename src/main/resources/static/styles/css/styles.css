@@ -633,3 +633,21 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 .searcher_container>.row{
   margin-top: 2rem;
 }
+@media (max-width: 600px) {
+  .selector_title{
+    margin:0 0.5rem;
+  }
+  .searcher_container .row{
+
+  padding-left:  unset;
+  padding-right: unset;
+  width: 100%;
+  margin-left: unset;
+  
+}
+.searcher_container{
+  margin:  unset;
+  margin-bottom: 3rem;
+ 
+}
+}
